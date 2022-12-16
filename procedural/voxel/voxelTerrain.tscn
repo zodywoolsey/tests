@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwxkky7j4jb0d"]
+
+[ext_resource type="Script" path="res://procedural/voxel/terrain.gd" id="1_sirb8"]
+[ext_resource type="PackedScene" uid="uid://dqhomu0wkoqfa" path="res://player/player.tscn" id="2_oehi5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iclq2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_dvast"]
+sky_material = SubResource("ProceduralSkyMaterial_iclq2")
+
+[sub_resource type="Environment" id="Environment_j3jxa"]
+background_mode = 2
+sky = SubResource("Sky_dvast")
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6c80g"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_8yuuj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7xc7"]
+cull_mode = 2
+albedo_color = Color(1, 0, 0.101961, 1)
+
+[node name="voxelTerrain" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j3jxa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="terrain" type="StaticBody3D" parent="."]
+script = ExtResource("1_sirb8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain"]
+shape = SubResource("BoxShape3D_6c80g")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+mesh = SubResource("ImmediateMesh_8yuuj")
+material = SubResource("StandardMaterial3D_k7xc7")
+
+[node name="player" parent="." instance=ExtResource("2_oehi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09651, 0)

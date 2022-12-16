@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://0tydtvhaqyvc"]
+
+[ext_resource type="Material" uid="uid://dxketcjoo6hl6" path="res://kenney-triplanar/dark-1.tres" id="1_3axxk"]
+[ext_resource type="PackedScene" uid="uid://dqhomu0wkoqfa" path="res://player/player.tscn" id="2_ulfhc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8ej6d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fxk2b"]
+sky_material = SubResource("ProceduralSkyMaterial_8ej6d")
+
+[sub_resource type="Environment" id="Environment_3ui78"]
+background_mode = 2
+sky = SubResource("Sky_fxk2b")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="hangar" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ui78")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_3axxk")
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="player" parent="." instance=ExtResource("2_ulfhc")]

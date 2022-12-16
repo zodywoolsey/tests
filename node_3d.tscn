@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqnoar1q0sw7v"]
+
+[ext_resource type="Texture2D" uid="uid://bmiivvbylqlui" path="res://addons/kenney_prototype_textures/green/texture_10.png" id="3_cot72"]
+[ext_resource type="PackedScene" uid="uid://cj1r4k6l06fd2" path="res://container_area.tscn" id="4_ry10a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tob4r"]
+albedo_texture = ExtResource("3_cot72")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="GDScript" id="GDScript_lrubx"]
+script/source = "extends CSGBox3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	global_transform.origin += global_transform.basis*Vector3(0,0,delta)
+"
+
+[sub_resource type="GDScript" id="GDScript_je8x3"]
+script/source = "extends AnimatableBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	global_transform.origin += global_transform.basis*Vector3(0,0,delta)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b68x2"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3cpme"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a2j5b"]
+friction = 0.0
+
+[sub_resource type="GDScript" id="GDScript_vyi8g"]
+script/source = "extends RigidBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	apply_central_force(global_transform.basis*Vector3(0,0,delta*10))
+	apply_torque(Vector3(0,5000,0))
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mrsn"]
+size = Vector3(10, 10, 10)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118208, -0.991553, -5.16703e-10)
+material_override = SubResource("StandardMaterial3D_tob4r")
+use_collision = true
+size = Vector3(200, 4.28375, 200)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 12, -6)
+use_collision = true
+size = Vector3(6, 1, 8)
+script = SubResource("GDScript_lrubx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
+size = Vector3(1, 4, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+size = Vector3(1, 4, 8)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.590817, -0.638321, 0.493439, 3.45831e-08, 0.611596, 0.79117, -0.806806, -0.467437, 0.361341, 0, 0, 0)
+shadow_enabled = true
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 19.2854, -7)
+script = SubResource("GDScript_je8x3")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D/CollisionShape3D7"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -5, 5, 0)
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D/CollisionShape3D8"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 5, 5, 0)
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D/CollisionShape3D9"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3465, 2.31779, -7.58238e-07)
+collision_layer = 8388609
+collision_mask = 8388609
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_a2j5b")
+can_sleep = false
+script = SubResource("GDScript_vyi8g")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D4"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -5, 5, 0)
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D5"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 5, 5, 0)
+shape = SubResource("BoxShape3D_b68x2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D6"]
+mesh = SubResource("BoxMesh_3cpme")
+skeleton = NodePath("")
+
+[node name="containerArea" parent="RigidBody3D" instance=ExtResource("4_ry10a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/containerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_6mrsn")

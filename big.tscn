@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf2xab7hwc7rn"]
+
+[ext_resource type="Texture2D" uid="uid://dmdrhqbofbk66" path="res://addons/kenney_prototype_textures/dark/texture_13.png" id="1_xdcwy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq65s"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnxtn"]
+albedo_texture = ExtResource("1_xdcwy")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="big" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nq65s")
+size = Vector3(1, 1000, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cnxtn")
+use_collision = true
+size = Vector3(20, 1, 20)

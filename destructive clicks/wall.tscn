@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://chu0lwa4jkf0j"]
+
+[ext_resource type="Script" path="res://destructive clicks/CSGBox3D.gd" id="1_6636n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bxkhd"]
+size = Vector3(50, 50, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mxukt"]
+
+[sub_resource type="Sky" id="Sky_q0eqo"]
+sky_material = SubResource("ProceduralSkyMaterial_mxukt")
+
+[sub_resource type="Environment" id="Environment_axyj1"]
+background_mode = 2
+sky = SubResource("Sky_q0eqo")
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+volumetric_fog_density = 0.3001
+volumetric_fog_length = 18.87
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("BoxMesh_bxkhd")
+script = ExtResource("1_6636n")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGMesh3D"]
+operation = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9372)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_axyj1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.810413, 0.374904, 0.450197, 0.174422, -0.887992, 0.425497, 0.559292, -0.266304, -0.785032, 0, 0, 0)
+light_energy = 7.728
+shadow_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.942)
+target_position = Vector3(3.45771, 1.56307, -10)
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

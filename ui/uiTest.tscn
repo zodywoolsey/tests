@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctlvbi66xwlmy"]
+
+[ext_resource type="Theme" uid="uid://c4mxhxjkapwhg" path="res://ui/new_theme.tres" id="1_gj1lx"]
+[ext_resource type="Script" path="res://ui/MeshInstance3D.gd" id="1_marok"]
+[ext_resource type="Script" path="res://ui/Camera3D.gd" id="1_rkb0t"]
+
+[sub_resource type="Environment" id="Environment_4f1p3"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+
+[sub_resource type="GDScript" id="GDScript_837nc"]
+script/source = "extends RigidBody3D
+@onready var colsh : CollisionShape3D = $CollisionShape3D
+@onready var sub_viewport : SubViewport = $MeshInstance3D/SubViewport
+@onready var control = $MeshInstance3D/SubViewport/Control
+
+func input(e):
+	# converts the collision point to a local point
+	var pos = to_local(e.pos)
+	# initalize empty Vector2
+	var tmppos = Vector2()
+	
+	# The math here uses offsets the pos x value with the width of the collision shape
+	# to map the local position between 0 and 1 on the surface of the collider
+	# then uses the viewport resolution to map that 0-1 value to a pixel that can
+	# be used to position the event when it's passed to the viewport
+	tmppos.x = (pos.x+(colsh.shape.size.x/2))*sub_viewport.size.x
+	# same math but flips the y position so that 0 is at the top
+	tmppos.y = -((pos.y+(colsh.shape.size.y/2))*sub_viewport.size.y)+sub_viewport.size.y
+	
+	var tmp
+	# if an event is passed then use that event
+	if e.event:
+		tmp = e.event
+	# otherwise create a new mouse motion event
+	else:
+		tmp = InputEventMouseMotion.new()
+	# set the event position to the calculated position 
+	tmp.position = tmppos
+	# pass the event to the viewport
+	sub_viewport.push_input(tmp)
+"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oyawh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ts68"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("ViewportTexture_oyawh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1o6yv"]
+material = SubResource("StandardMaterial3D_4ts68")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7k1j"]
+size = Vector3(1, 1, 0.01)
+
+[node name="uiTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 2)
+script = ExtResource("1_rkb0t")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(8, 1, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.803383, 0.372902, -0.464241, 0.0210742, 0.761337, 0.648013, 0.59509, -0.530386, 0.603787, 0, 6, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4f1p3")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["3dui"]]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 1)
+freeze = true
+script = SubResource("GDScript_837nc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("QuadMesh_1o6yv")
+skeleton = NodePath("../../Camera3D")
+script = ExtResource("1_marok")
+
+[node name="SubViewport" type="SubViewport" parent="RigidBody3D/MeshInstance3D"]
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="RigidBody3D/MeshInstance3D/SubViewport"]
+custom_minimum_size = Vector2(11.451, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gj1lx")
+
+[node name="Button" type="Button" parent="RigidBody3D/MeshInstance3D/SubViewport/Control"]
+offset_right = 74.9912
+offset_bottom = 54.0
+text = "Test"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_g7k1j")

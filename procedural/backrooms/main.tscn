@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://btmo0d70evqru"]
+
+[ext_resource type="Script" path="res://procedural/backrooms/scripts/procedural.gd" id="1_u5i77"]
+
+[sub_resource type="Sky" id="Sky_p44iy"]
+
+[sub_resource type="Environment" id="Environment_cab83"]
+background_mode = 2
+sky = SubResource("Sky_p44iy")
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.9
+sdfgi_cascades = 2
+sdfgi_y_scale = 2
+sdfgi_energy = 1.5
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 1.09
+glow_hdr_threshold = 0.0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0954
+volumetric_fog_density = 0.1609
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_u5i77")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cab83")

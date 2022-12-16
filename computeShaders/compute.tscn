@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmnxo5a7ij3f5"]
+
+[ext_resource type="Script" path="res://computeShaders/compute.gd" id="1_8a330"]
+
+[node name="compute" type="Node3D"]
+script = ExtResource("1_8a330")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

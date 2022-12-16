@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk2u00wp42725"]
+
+[ext_resource type="Script" path="res://VehicleBody3D.gd" id="1_30nj2"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_1jw4q"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vhd7i"]
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcpcv"]
+size = Vector3(1, 0.249837, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cfch4"]
+size = Vector3(1, 0.25, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fat08"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kb2d"]
+size = Vector3(0.05, 1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pvnc"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr0sd"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="VehicleBody3D" type="VehicleBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -4)
+mass = 1500.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.3, 0)
+can_sleep = false
+script = ExtResource("1_30nj2")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.251, 1)
+use_as_steering = true
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vhd7i")
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.251, -1)
+use_as_traction = true
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="VehicleWheel3D2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vhd7i")
+skeleton = NodePath("../../VehicleWheel3D")
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.251, 0.999999)
+use_as_steering = true
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="VehicleWheel3D3"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vhd7i")
+skeleton = NodePath("../../VehicleWheel3D")
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.251, -1)
+use_as_traction = true
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="VehicleWheel3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vhd7i")
+skeleton = NodePath("../../VehicleWheel3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bcpcv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_cfch4")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 5.65704e-08, -7.45931e-08, 1.88568e-08, 0.902164, 0.431393, 9.16993e-08, 0.431393, -0.902164, -1.90735e-06, 3.0561, -4.81004)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+material_overlay = SubResource("StandardMaterial3D_fat08")
+mesh = SubResource("BoxMesh_4kb2d")
+script = ExtResource("2_1jw4q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 0, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_1pvnc")
+mesh = SubResource("BoxMesh_4kb2d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(4.37114e-08, -8.74228e-08, 1, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -1, -8.74228e-08, 0, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_kr0sd")
+mesh = SubResource("BoxMesh_4kb2d")
+skeleton = NodePath("../..")

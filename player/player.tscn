@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqhomu0wkoqfa"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_g2ams"]
+[ext_resource type="PackedScene" path="res://player/console.tscn" id="2_scdtb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_885av"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uml75"]
+metallic = 1.0
+roughness = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_uqw7k"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_uml75")
+radial_segments = 8
+rings = 5
+
+[sub_resource type="GDScript" id="GDScript_i6clm"]
+script/source = "extends RayCast3D
+
+func _process(delta):
+	global_rotation = Vector3()
+"
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+platform_floor_layers = 4286578688
+platform_wall_layers = 8388608
+script = ExtResource("1_g2ams")
+
+[node name="playerArea" type="Area3D" parent="."]
+collision_layer = 8388608
+collision_mask = 8388608
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerArea"]
+shape = SubResource("SphereShape3D_885av")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_885av")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -1000)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_uqw7k")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "tst"
+
+[node name="overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.00392157)
+
+[node name="ColorRect" type="ColorRect" parent="overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -0.5
+offset_right = 6.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -5.0
+offset_right = 0.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0, 1, 1)
+
+[node name="ceilray" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1, 0)
+script = SubResource("GDScript_i6clm")
+
+[node name="floorCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, -0.1, 0)
+collision_mask = 8388608
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="console" parent="." instance=ExtResource("2_scdtb")]
+visible = false

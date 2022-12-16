@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbluk5ti8amke"]
+
+[ext_resource type="Script" path="res://bodytest.gd" id="1_2roha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_50is0"]
+size = Vector3(0.3, 0.25, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpd5q"]
+size = Vector3(0.3, 0.25, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k0edo"]
+size = Vector3(0.3, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7esox"]
+size = Vector3(0.3, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6m7n"]
+size = Vector3(0.3, 0.25, 0.2)
+
+[node name="body" type="Node3D"]
+script = ExtResource("1_2roha")
+
+[node name="chest" type="RigidBody3D" parent="."]
+mass = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chest"]
+mesh = SubResource("BoxMesh_50is0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest"]
+shape = SubResource("BoxShape3D_dpd5q")
+
+[node name="rightShoulderJoint" type="Generic6DOFJoint3D" parent="chest"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.160024, 0.0640097, 0)
+node_a = NodePath("..")
+node_b = NodePath("../rightArm")
+angular_limit_x/upper_angle = 1.2905
+angular_limit_x/lower_angle = -0.597601
+angular_limit_y/upper_angle = 0.261799
+angular_limit_y/lower_angle = -0.261799
+angular_limit_z/upper_angle = 1.66295
+angular_limit_z/lower_angle = -0.59987
+
+[node name="leftShoulderJoint" type="Generic6DOFJoint3D" parent="chest"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.164193, 0.0640097, 0)
+node_a = NodePath("..")
+node_b = NodePath("../leftArm")
+angular_limit_x/upper_angle = 0.593412
+angular_limit_x/lower_angle = -1.29154
+angular_limit_y/upper_angle = 0.261799
+angular_limit_y/lower_angle = -0.261799
+angular_limit_z/upper_angle = 0.610865
+angular_limit_z/lower_angle = -1.65806
+
+[node name="rightArm" type="RigidBody3D" parent="chest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.317069, 0.0726298, 0)
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chest/rightArm"]
+mesh = SubResource("BoxMesh_k0edo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest/rightArm"]
+shape = SubResource("BoxShape3D_7esox")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="chest/rightArm"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.165461, 0, 0)
+node_a = NodePath("..")
+node_b = NodePath("../rightArm2")
+angular_limit_x/upper_angle = 1.46555
+angular_limit_x/lower_angle = -0.0401426
+angular_limit_y/upper_angle = 0.261799
+angular_limit_y/lower_angle = -0.261799
+angular_limit_z/upper_angle = 0.139626
+angular_limit_z/lower_angle = -0.139626
+
+[node name="rightArm2" type="RigidBody3D" parent="chest/rightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322658, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chest/rightArm/rightArm2"]
+mesh = SubResource("BoxMesh_k0edo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest/rightArm/rightArm2"]
+shape = SubResource("BoxShape3D_7esox")
+
+[node name="leftArm" type="RigidBody3D" parent="chest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317, 0.073, 0)
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chest/leftArm"]
+mesh = SubResource("BoxMesh_k0edo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest/leftArm"]
+shape = SubResource("BoxShape3D_7esox")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="chest/leftArm"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.165, 0, 0)
+node_a = NodePath("..")
+node_b = NodePath("../leftArm2")
+angular_limit_x/upper_angle = 0.0523599
+angular_limit_x/lower_angle = -1.46608
+angular_limit_y/upper_angle = 0.261799
+angular_limit_y/lower_angle = -0.261799
+angular_limit_z/upper_angle = 0.139626
+angular_limit_z/lower_angle = -0.139626
+
+[node name="leftArm2" type="RigidBody3D" parent="chest/leftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.323, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chest/leftArm/leftArm2"]
+mesh = SubResource("BoxMesh_k0edo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest/leftArm/leftArm2"]
+shape = SubResource("BoxShape3D_7esox")
+
+[node name="torsoJoint" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136354, 0.0329343)
+node_a = NodePath("../chest")
+node_b = NodePath("../torso")
+angular_limit_x/upper_angle = 0.332834
+angular_limit_x/lower_angle = -0.613658
+
+[node name="torso" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26945, 0)
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="torso"]
+mesh = SubResource("BoxMesh_50is0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="torso"]
+shape = SubResource("BoxShape3D_k6m7n")
+disabled = true
