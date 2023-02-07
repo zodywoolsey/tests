@@ -4,22 +4,23 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5b41gi5h0e8v"
 path.s3tc="res://.godot/imported/Body_Roughness.png-34a9275967bc49d15cb399cab7db2b20.s3tc.ctex"
+path.etc2="res://.godot/imported/Body_Roughness.png-34a9275967bc49d15cb399cab7db2b20.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://vtube/arflin/Textures/Body_Roughness.png"
-dest_files=["res://.godot/imported/Body_Roughness.png-34a9275967bc49d15cb399cab7db2b20.s3tc.ctex"]
+dest_files=["res://.godot/imported/Body_Roughness.png-34a9275967bc49d15cb399cab7db2b20.s3tc.ctex", "res://.godot/imported/Body_Roughness.png-34a9275967bc49d15cb399cab7db2b20.etc2.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
