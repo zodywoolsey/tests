@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4pcg2btmm31m"]
+[gd_scene load_steps=8 format=3 uid="uid://b4pcg2btmm31m"]
 
-[ext_resource type="PackedScene" uid="uid://cv2ljnw5hrwbo" path="res://vtube/arflin/arflin.tscn" id="1_amsym"]
+[ext_resource type="PackedScene" uid="uid://bobiq7h0hkw2m" path="res://vtube/arflin/arflin.tscn" id="1_amsym"]
 
 [sub_resource type="GDScript" id="GDScript_osnq7"]
 script/source = "extends Node3D
@@ -28,6 +28,19 @@ func _input(event):
 	if event is InputEventMouse:
 		mousePos = event.position
 "
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xlqcj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7dtvn"]
+sky_material = SubResource("ProceduralSkyMaterial_xlqcj")
+
+[sub_resource type="Environment" id="Environment_uhb6q"]
+background_mode = 2
+sky = SubResource("Sky_7dtvn")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_0ao3x"]
 
@@ -83,6 +96,13 @@ func aa():
 
 [node name="vtubeTest" type="Node3D"]
 script = SubResource("GDScript_osnq7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uhb6q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_0ao3x")

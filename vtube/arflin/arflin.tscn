@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2ljnw5hrwbo"]
+[gd_scene load_steps=3 format=3 uid="uid://bobiq7h0hkw2m"]
 
 [ext_resource type="PackedScene" uid="uid://iasdv8fq2h7y" path="res://vtube/arflin/sweater/sweater.tscn" id="1_ww7dt"]
 [ext_resource type="PackedScene" uid="uid://blrikadbrv6oq" path="res://vtube/arflin/body/body.tscn" id="2_03f87"]
