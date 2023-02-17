@@ -60,8 +60,8 @@ var currentVals : PackedFloat32Array = PackedFloat32Array()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	idx = AudioServer.get_bus_index(\"mic\")
-	spectrum = AudioServer.get_bus_effect_instance(idx,1)
-	record = AudioServer.get_bus_effect(idx,0)
+	spectrum = AudioServer.get_bus_effect_instance(idx,0)
+#	record = AudioServer.get_bus_effect(idx,1)
 	for i in range(channels):
 		currentVals.append(0)
 		var tmp = ColorRect.new()
