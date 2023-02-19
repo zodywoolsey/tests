@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crb1y1ae5pp1o"]
+
+[ext_resource type="Script" path="res://synth/synth.gd" id="1_sr2fh"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_d0lbt"]
+mix_rate = 11025.0
+
+[node name="synth" type="Node3D"]
+script = ExtResource("1_sr2fh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_d0lbt")
+volume_db = -14.946
+autoplay = true

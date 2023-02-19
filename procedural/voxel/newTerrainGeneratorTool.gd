@@ -1,11 +1,12 @@
 @tool
 extends EditorScript
 
-@onready var ter : MeshInstance3D = get_scene().find_child('TerrainMesh')
+#@onready var ter : MeshInstance3D = get_scene().find_child('TerrainMesh')
+var ter : MeshInstance3D
 
-var size = 50
+var size = 200
 var cSeed = 0
-var noiseScale = 10
+var noiseScale = 1
 var snapScale = .5
 var noise : FastNoiseLite = FastNoiseLite.new()
 var amesh : ArrayMesh
@@ -22,7 +23,7 @@ func _run():
 			randomize()
 			noise.seed = randi()
 			seed(cSeed)
-		#	genthread.start(generate)
+#			genthread.start(generate)
 			generate()
 	
 
