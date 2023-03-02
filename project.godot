@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="tests"
-run/main_scene="res://synth/synth.tscn"
+run/main_scene="res://testScenes/visualScriptingTest/world.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
 driver/enable_input=true
+
+[display]
+
+window/subwindows/embed_subwindows=false
 
 [editor_plugins]
 

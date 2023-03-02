@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6iubikkoyia4"]
+
+[ext_resource type="Script" path="res://testScenes/visualScriptingTest/nodeGraphtest.gd" id="1_oxxe5"]
+[ext_resource type="PackedScene" uid="uid://dsll4vkv5oyf7" path="res://testScenes/visualScriptingTest/nodes/findNodeByName.tscn" id="2_m0h0v"]
+
+[node name="GraphEdit" type="GraphEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+right_disconnects = true
+zoom = 0.8
+zoom_min = 0.2
+zoom_max = 2.0
+show_zoom_label = true
+minimap_enabled = false
+script = ExtResource("1_oxxe5")
+
+[node name="findNodeByName" parent="." instance=ExtResource("2_m0h0v")]
+layout_mode = 0
+offset_right = 177.0
+offset_bottom = 171.0
+scale = Vector2(0.8, 0.8)
+mouse_filter = 1
+
+[node name="findNodeByName2" parent="." instance=ExtResource("2_m0h0v")]
+layout_mode = 0
+offset_right = 177.0
+offset_bottom = 171.0
+scale = Vector2(0.8, 0.8)
+mouse_filter = 1
