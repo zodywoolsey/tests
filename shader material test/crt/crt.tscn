@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://13it8bloii54"]
+
+[ext_resource type="Texture2D" uid="uid://daliswicfddgv" path="res://shader material test/crt/hl2.jpg" id="1_3rx4t"]
+[ext_resource type="Texture2D" uid="uid://cog0gj4gr1y15" path="res://shader material test/crt/rgb.jpg" id="2_8do18"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_67hew"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k8ndh"]
+seamless = true
+noise = SubResource("FastNoiseLite_67hew")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f0rg7"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Sky" id="Sky_cp0x4"]
+sky_material = SubResource("ProceduralSkyMaterial_f0rg7")
+
+[sub_resource type="Environment" id="Environment_m073r"]
+background_mode = 2
+sky = SubResource("Sky_cp0x4")
+tonemap_mode = 1
+tonemap_white = 16.0
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.02
+glow_enabled = true
+glow_levels/1 = 16.0
+glow_levels/2 = 16.0
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_bloom = 0.01
+glow_blend_mode = 4
+glow_hdr_scale = 4.0
+glow_map = SubResource("NoiseTexture2D_k8ndh")
+adjustment_enabled = true
+adjustment_brightness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oorqp"]
+blend_mode = 3
+detail_enabled = true
+detail_blend_mode = 3
+detail_albedo = ExtResource("2_8do18")
+uv1_scale = Vector3(200, 200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qanw"]
+next_pass = SubResource("StandardMaterial3D_oorqp")
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 8192.0
+emission_texture = ExtResource("1_3rx4t")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv2_scale = Vector3(200, 200, 200)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_35x1s"]
+material = SubResource("StandardMaterial3D_2qanw")
+size = Vector2(10, 10)
+
+[node name="crt" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m073r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_35x1s")
