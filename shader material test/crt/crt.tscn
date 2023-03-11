@@ -1,7 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://13it8bloii54"]
-
-[ext_resource type="Texture2D" uid="uid://daliswicfddgv" path="res://shader material test/crt/hl2.jpg" id="1_3rx4t"]
-[ext_resource type="Texture2D" uid="uid://cog0gj4gr1y15" path="res://shader material test/crt/rgb.jpg" id="2_8do18"]
+[gd_scene load_steps=10 format=3 uid="uid://13it8bloii54"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_67hew"]
 
@@ -39,11 +36,14 @@ glow_map = SubResource("NoiseTexture2D_k8ndh")
 adjustment_enabled = true
 adjustment_brightness = 2.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f36ow"]
+load_path = "res://.godot/imported/rgb.jpg-1e80a6a9949b695f72e0a4d3e4bd54ba.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oorqp"]
 blend_mode = 3
 detail_enabled = true
 detail_blend_mode = 3
-detail_albedo = ExtResource("2_8do18")
+detail_albedo = SubResource("CompressedTexture2D_f36ow")
 uv1_scale = Vector3(200, 200, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qanw"]
@@ -53,7 +53,6 @@ metallic_specular = 0.0
 roughness = 0.0
 emission_enabled = true
 emission_energy_multiplier = 8192.0
-emission_texture = ExtResource("1_3rx4t")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true

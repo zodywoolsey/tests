@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var label = $Label
 @onready var audio_stream_player = $AudioStreamPlayer
 var stream : AudioStreamGeneratorPlayback
 var timer = 0
@@ -13,6 +14,7 @@ func _ready():
 
 func _process(delta):
 	audio_stream_player.pitch_scale = lerp(audio_stream_player.pitch_scale,mousepos.length()/10,.1)
+	label.text = str(audio_stream_player.pitch_scale)
 	mousepos = Vector2()
 	timer += stream.get_frames_available()
 	var tofill = stream.get_frames_available()
