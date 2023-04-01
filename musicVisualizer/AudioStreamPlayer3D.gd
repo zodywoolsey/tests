@@ -24,9 +24,9 @@ func _process(delta):
 	var mat : StandardMaterial3D = mesh_instance_3d.get_active_material(0)
 	var tmp = (spc.get_magnitude_for_frequency_range(0,100)[0]*100)+.1
 	var tmph = (spc.get_magnitude_for_frequency_range(1000,10000)[0]*100)+1.0
-	omni_light_3d_2.light_energy = lerpf(omni_light_3d_2.light_energy,tmp,.5)
-	mat.emission_energy_multiplier = lerpf(mat.emission_energy_multiplier,tmp,.5)
-	omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy,tmph,.5)
+	omni_light_3d_2.light_energy = lerpf(omni_light_3d_2.light_energy,tmp*2,.3)
+	mat.emission_energy_multiplier = lerpf(mat.emission_energy_multiplier,tmp*2,.3)
+	omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy,tmph*2,.3)
 	
 	if Input.is_action_just_pressed("jump"):
 		for body in get_tree().get_nodes_in_group("musicBody"):

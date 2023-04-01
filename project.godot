@@ -99,7 +99,3 @@ consoleToggle={
 [physics]
 
 3d/run_on_separate_thread=true
-
-[rendering]
-
-scaling_3d/scale=2.0
