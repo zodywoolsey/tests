@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bobiq7h0hkw2m"]
+[gd_scene load_steps=6 format=3 uid="uid://bobiq7h0hkw2m"]
 
 [ext_resource type="PackedScene" uid="uid://iasdv8fq2h7y" path="res://vtube/arflin/sweater/sweater.tscn" id="1_ww7dt"]
 [ext_resource type="PackedScene" uid="uid://blrikadbrv6oq" path="res://vtube/arflin/body/body.tscn" id="2_03f87"]
+[ext_resource type="Script" path="res://vtube/arflin/body/bodyskronk.gd" id="3_2a06v"]
 [ext_resource type="Script" path="res://vtube/arflin/Node3D.gd" id="3_sx74w"]
+[ext_resource type="Script" path="res://addons/free look camera/free_look_camera.gd" id="5_2ktqo"]
 
 [node name="arflin" type="Skeleton3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -738,6 +740,7 @@ bones/103/scale = Vector3(1, 1, 1)
 [node name="Sweater" parent="." instance=ExtResource("1_ww7dt")]
 
 [node name="body" parent="." instance=ExtResource("2_03f87")]
+script = ExtResource("3_2a06v")
 
 [node name="SkeletonIK3D" type="SkeletonIK3D" parent="."]
 process_priority = 1
@@ -747,5 +750,8 @@ use_magnet = true
 target_node = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.826125, 0.533364, 0.181771, 0.520903, -0.845887, 0.114614, 0.214889, -3.50976e-15, -0.976638, 2.90465, 5.05879, 3.2021e-09)
+transform = Transform3D(0.826125, 0.533364, 0.181771, 0.520903, -0.845887, 0.114614, 0.214889, -3.50976e-15, -0.976638, 0.583699, 5.2, -0.81197)
 script = ExtResource("3_sx74w")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("5_2ktqo")
