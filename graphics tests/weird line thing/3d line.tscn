@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://8ccpc8cnu1ds"]
 
-[ext_resource type="Script" path="res://graphics tests/weird line thing/3d line.gd" id="1_g4281"]
-[ext_resource type="Script" path="res://graphics tests/weird line thing/Line3D.gd" id="2_tlsrf"]
-[ext_resource type="Material" uid="uid://bdpi03sd8b6aa" path="res://addons/kenney_prototype_textures/triplanar/dark.tres" id="3_47nc7"]
+[ext_resource type="Script" path="res://graphics tests/weird line thing/3d line.gd" id="1_x2vyh"]
+[ext_resource type="Script" path="res://graphics tests/weird line thing/Line3D.gd" id="2_ry3k0"]
+[ext_resource type="Material" uid="uid://bdpi03sd8b6aa" path="res://addons/kenney_prototype_textures/triplanar/dark.tres" id="3_5eovy"]
 
 [sub_resource type="Environment" id="Environment_5mjqi"]
 background_mode = 1
@@ -18,7 +18,7 @@ emission = Color(1, 0, 0, 1)
 point_size = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_iv6ca"]
-material = ExtResource("3_47nc7")
+material = ExtResource("3_5eovy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_je5ji"]
 
@@ -32,7 +32,7 @@ item/0/navigation_layers = 1
 metadata/_editor_source_scene = "res://graphics tests/weird line thing/box.tscn"
 
 [node name="3d line" type="Node3D"]
-script = ExtResource("1_g4281")
+script = ExtResource("1_x2vyh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -51,7 +51,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 material_override = SubResource("StandardMaterial3D_vcs62")
 cast_shadow = 0
-script = ExtResource("2_tlsrf")
+script = ExtResource("2_ry3k0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9, 16)

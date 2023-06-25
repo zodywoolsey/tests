@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4pcg2btmm31m"]
 
-[ext_resource type="PackedScene" uid="uid://bobiq7h0hkw2m" path="res://vtube/arflin/arflin.tscn" id="1_amsym"]
+[ext_resource type="PackedScene" uid="uid://bobiq7h0hkw2m" path="res://vtube/arflin/arflin.tscn" id="1_jbiy7"]
 
 [sub_resource type="GDScript" id="GDScript_osnq7"]
 script/source = "extends Node3D
@@ -131,8 +131,7 @@ anchor_bottom = 0.5
 grow_vertical = 2
 alignment = 1
 
-[node name="arflin" parent="." instance=ExtResource("1_amsym")]
-animate_physical_bones = false
+[node name="arflin" parent="." instance=ExtResource("1_jbiy7")]
 bones/0/rotation = Quaternion(0.068866, 0, 0, 0.997626)
 bones/4/rotation = Quaternion(1.16821e-07, 1.72716e-13, 1.72715e-13, 1)
 bones/7/rotation = Quaternion(0.0877365, -0.243756, -0.243755, 0.934596)

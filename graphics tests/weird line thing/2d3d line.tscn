@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://hwlsm81miwgl"]
 
-[ext_resource type="Script" path="res://graphics tests/weird line thing/2d3d line.gd" id="1_h7olx"]
+[ext_resource type="Script" path="res://graphics tests/weird line thing/2d3d line.gd" id="1_grw4n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_du0w5"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -10,7 +10,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="2d3d line" type="Node3D"]
-script = ExtResource("1_h7olx")
+script = ExtResource("1_grw4n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)

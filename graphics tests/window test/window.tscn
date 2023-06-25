@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbqe06r0dh2tb"]
 
-[ext_resource type="Script" path="res://graphics tests/window test/Button2.gd" id="1_l44li"]
+[ext_resource type="Script" path="res://graphics tests/window test/Button2.gd" id="1_q2tfu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8mhwb"]
 
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "button 1"
-script = ExtResource("1_l44li")
+script = ExtResource("1_q2tfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_8mhwb")
@@ -36,4 +36,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "button 2"
-script = ExtResource("1_l44li")
+script = ExtResource("1_q2tfu")

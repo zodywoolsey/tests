@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://c0ruox71wt3ya"]
 
-[ext_resource type="Theme" uid="uid://d2yrdomd2eyx1" path="res://ui/bark testing/theming/test.theme" id="1_bxw5g"]
-[ext_resource type="Shader" path="res://ui/bark testing/theming/primary.gdshader" id="2_j4hlq"]
-[ext_resource type="Shader" path="res://ui/bark testing/theming/secondary.gdshader" id="3_2madh"]
-[ext_resource type="Texture2D" uid="uid://d05btkqicdfkm" path="res://ui/bark testing/theming/mic-on.svg" id="4_p0k38"]
+[ext_resource type="Theme" uid="uid://d2yrdomd2eyx1" path="res://ui/bark testing/theming/test.theme" id="1_shbn1"]
+[ext_resource type="Shader" path="res://ui/bark testing/theming/primary.gdshader" id="2_hk30q"]
+[ext_resource type="Shader" path="res://ui/bark testing/theming/secondary.gdshader" id="3_6qa35"]
+[ext_resource type="Texture2D" uid="uid://d05btkqicdfkm" path="res://ui/bark testing/theming/mic-on.svg" id="4_xlmsj"]
 
 [sub_resource type="GDScript" id="GDScript_sltjb"]
 script/source = "extends Control
@@ -28,11 +28,11 @@ func set_color(color:Color):
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb34l"]
-shader = ExtResource("2_j4hlq")
+shader = ExtResource("2_hk30q")
 shader_parameter/color = Vector4(0, 200, 0, 0.396)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bk0d7"]
-shader = ExtResource("3_2madh")
+shader = ExtResource("3_6qa35")
 shader_parameter/color = Vector4(0, 0, 0, 1)
 shader_parameter/press = null
 shader_parameter/hover = null
@@ -155,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_bxw5g")
+theme = ExtResource("1_shbn1")
 script = SubResource("GDScript_sltjb")
 
 [node name="left" type="Panel" parent="."]
@@ -201,7 +201,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture = ExtResource("4_p0k38")
+texture = ExtResource("4_xlmsj")
 expand_mode = 3
 stretch_mode = 4
 
