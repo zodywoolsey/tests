@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmyo12jv1nvvi"
 path.s3tc="res://.godot/imported/PurpleTex.png-e195d5fd76f38045185cee83b3ecf1ea.s3tc.ctex"
+path.etc2="res://.godot/imported/PurpleTex.png-e195d5fd76f38045185cee83b3ecf1ea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://vtube/arflin/Textures/Clothes/PurpleTex.png"
-dest_files=["res://.godot/imported/PurpleTex.png-e195d5fd76f38045185cee83b3ecf1ea.s3tc.ctex"]
+dest_files=["res://.godot/imported/PurpleTex.png-e195d5fd76f38045185cee83b3ecf1ea.s3tc.ctex", "res://.godot/imported/PurpleTex.png-e195d5fd76f38045185cee83b3ecf1ea.etc2.ctex"]
 
 [params]
 

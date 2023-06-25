@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://kshk1q7np4cq"
 path.s3tc="res://.godot/imported/walltex.png-e252189a1f3dc265c1a8f7002af830d0.s3tc.ctex"
+path.etc2="res://.godot/imported/walltex.png-e252189a1f3dc265c1a8f7002af830d0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://procedural/assets/walltex.png"
-dest_files=["res://.godot/imported/walltex.png-e252189a1f3dc265c1a8f7002af830d0.s3tc.ctex"]
+dest_files=["res://.godot/imported/walltex.png-e252189a1f3dc265c1a8f7002af830d0.s3tc.ctex", "res://.godot/imported/walltex.png-e252189a1f3dc265c1a8f7002af830d0.etc2.ctex"]
 
 [params]
 

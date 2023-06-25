@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbqe06r0dh2tb"]
+
+[ext_resource type="Script" path="res://graphics tests/window test/Button2.gd" id="1_l44li"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mhwb"]
+
+[node name="window" type="Node3D"]
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(0, 36)
+mode = 3
+
+[node name="Camera3D2" type="Camera3D" parent="Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Button" type="Button" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "button 1"
+script = ExtResource("1_l44li")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8mhwb")
+skeleton = NodePath("../Window")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0, 0)
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "button 2"
+script = ExtResource("1_l44li")

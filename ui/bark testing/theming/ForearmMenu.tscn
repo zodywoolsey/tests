@@ -1,0 +1,272 @@
+[gd_scene load_steps=20 format=3 uid="uid://c0ruox71wt3ya"]
+
+[ext_resource type="Theme" uid="uid://d2yrdomd2eyx1" path="res://ui/bark testing/theming/test.theme" id="1_bxw5g"]
+[ext_resource type="Shader" path="res://ui/bark testing/theming/primary.gdshader" id="2_j4hlq"]
+[ext_resource type="Shader" path="res://ui/bark testing/theming/secondary.gdshader" id="3_2madh"]
+[ext_resource type="Texture2D" uid="uid://d05btkqicdfkm" path="res://ui/bark testing/theming/mic-on.svg" id="4_p0k38"]
+
+[sub_resource type="GDScript" id="GDScript_sltjb"]
+script/source = "extends Control
+
+var mousein:bool = false
+@onready var left = $left
+@onready var button = $left/VBoxContainer/Button
+@onready var button_2 = $left/VBoxContainer/Button2
+@onready var right = $right
+var primary :ShaderMaterial
+var secondary :ShaderMaterial
+
+func _ready():
+	primary = left.material
+	secondary = button.material
+
+func set_color(color:Color):
+	left.material.set_shader_parameter(\"color\",color*Color(.75,.75,.75,.5))
+	button.material.set_shader_parameter(\"color\",color)
+	button_2.material.set_shader_parameter(\"color\",color)
+	right.material.set_shader_parameter(\"color\",color)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb34l"]
+shader = ExtResource("2_j4hlq")
+shader_parameter/color = Vector4(0, 200, 0, 0.396)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bk0d7"]
+shader = ExtResource("3_2madh")
+shader_parameter/color = Vector4(0, 0, 0, 1)
+shader_parameter/press = null
+shader_parameter/hover = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="GDScript" id="GDScript_h4doc"]
+script/source = "extends Button
+
+func _process(delta):
+	if is_hovered():
+		material.set_shader_parameter(\"hover\",true)
+	else:
+		material.set_shader_parameter(\"hover\",false)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7qyo"]
+
+[sub_resource type="Shader" id="Shader_10to3"]
+code = "shader_type canvas_item;
+
+uniform vec4 color;
+varying vec4 curcolor;
+uniform bool press;
+uniform bool hover;
+uniform float alpha = 1.0;
+
+void fragment() {
+	curcolor = color;
+	if(hover){
+		curcolor *= .75; 
+	}
+	curcolor.a *= alpha;
+	COLOR = curcolor;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndcd7"]
+shader = SubResource("Shader_10to3")
+shader_parameter/color = null
+shader_parameter/press = false
+shader_parameter/hover = false
+shader_parameter/alpha = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3tr4"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_uldrc"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vsj7r"]
+gradient = SubResource("Gradient_uldrc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5p1p"]
+bg_color = Color(0.643137, 0.643137, 0.643137, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vptnl"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Shader" id="Shader_asfj5"]
+code = "shader_type canvas_item;
+
+uniform vec4 color;
+varying vec4 curcolor;
+uniform bool press;
+uniform bool hover;
+uniform float alpha = 1.0;
+
+void fragment() {
+	curcolor = color;
+	if(hover){
+		curcolor *= .75; 
+	}
+	curcolor.a *= alpha;
+	COLOR = curcolor;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cyol"]
+shader = SubResource("Shader_asfj5")
+shader_parameter/color = null
+shader_parameter/press = false
+shader_parameter/hover = false
+shader_parameter/alpha = 0.8
+
+[sub_resource type="GDScript" id="GDScript_ngu6v"]
+script/source = "extends Panel
+
+var mousein:bool = false
+
+func _ready():
+	mouse_entered.connect(func():
+		mousein = true
+		)
+	mouse_exited.connect(func():
+		mousein = false
+		)
+
+var pressed:bool = false
+
+func _input(event):
+	if event is InputEventMouseButton:
+		pressed = event.pressed
+	if event is InputEventMouseMotion:
+		if pressed and mousein:
+			get_window().position += Vector2i(event.relative)
+"
+
+[node name="ForearmMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bxw5g")
+script = SubResource("GDScript_sltjb")
+
+[node name="left" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_eb34l")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 0.35
+anchor_bottom = 0.9
+grow_vertical = 2
+theme_type_variation = &"Panel_left"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="left/VBoxContainer"]
+material = SubResource("ShaderMaterial_bk0d7")
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+script = SubResource("GDScript_h4doc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="left/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="left/VBoxContainer/Button/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("4_p0k38")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="left/VBoxContainer/Button/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "muted"
+label_settings = SubResource("LabelSettings_g7qyo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="left/VBoxContainer"]
+material = SubResource("ShaderMaterial_ndcd7")
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="left/VBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="left/VBoxContainer/Button2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "volume"
+label_settings = SubResource("LabelSettings_o3tr4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="left/VBoxContainer/Button2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_icons/grabber = SubResource("GradientTexture1D_vsj7r")
+theme_override_styles/slider = SubResource("StyleBoxFlat_n5p1p")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_vptnl")
+value = 60.0
+ticks_on_borders = true
+
+[node name="right" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_6cyol")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Panel_right_bright"
+script = SubResource("GDScript_ngu6v")
+
+[node name="Label" type="Label" parent="right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "drag here to move window"
+horizontal_alignment = 1
+vertical_alignment = 1

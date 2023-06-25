@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba7wkc2bolwk5"
 path.s3tc="res://.godot/imported/chamber1_3td_Stone_24_NRM.png-9bed62997cda9c1912237f66df2d70a6.s3tc.ctex"
+path.etc2="res://.godot/imported/chamber1_3td_Stone_24_NRM.png-9bed62997cda9c1912237f66df2d70a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://testScenes/cave/shapes/chambers/chamber1_3td_Stone_24_NRM.png"
-dest_files=["res://.godot/imported/chamber1_3td_Stone_24_NRM.png-9bed62997cda9c1912237f66df2d70a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/chamber1_3td_Stone_24_NRM.png-9bed62997cda9c1912237f66df2d70a6.s3tc.ctex", "res://.godot/imported/chamber1_3td_Stone_24_NRM.png-9bed62997cda9c1912237f66df2d70a6.etc2.ctex"]
 
 [params]
 

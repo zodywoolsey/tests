@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://crvuxd02moe21"
 path.s3tc="res://.godot/imported/Body_Metallic.png-e155a323419208e589656bdb7d751637.s3tc.ctex"
+path.etc2="res://.godot/imported/Body_Metallic.png-e155a323419208e589656bdb7d751637.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://vtube/arflin/Textures/Body_Metallic.png"
-dest_files=["res://.godot/imported/Body_Metallic.png-e155a323419208e589656bdb7d751637.s3tc.ctex"]
+dest_files=["res://.godot/imported/Body_Metallic.png-e155a323419208e589656bdb7d751637.s3tc.ctex", "res://.godot/imported/Body_Metallic.png-e155a323419208e589656bdb7d751637.etc2.ctex"]
 
 [params]
 

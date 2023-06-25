@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://tsv6da38ak7j"
 path.s3tc="res://.godot/imported/Clothes_Normal_OpenGL.png-812e322c2f5199e99bbf7fffacb6ddec.s3tc.ctex"
+path.etc2="res://.godot/imported/Clothes_Normal_OpenGL.png-812e322c2f5199e99bbf7fffacb6ddec.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://vtube/arflin/Textures/Clothes/Clothes_Normal_OpenGL.png"
-dest_files=["res://.godot/imported/Clothes_Normal_OpenGL.png-812e322c2f5199e99bbf7fffacb6ddec.s3tc.ctex"]
+dest_files=["res://.godot/imported/Clothes_Normal_OpenGL.png-812e322c2f5199e99bbf7fffacb6ddec.s3tc.ctex", "res://.godot/imported/Clothes_Normal_OpenGL.png-812e322c2f5199e99bbf7fffacb6ddec.etc2.ctex"]
 
 [params]
 

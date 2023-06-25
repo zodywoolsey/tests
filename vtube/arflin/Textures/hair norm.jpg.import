@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwxgux8be3jgy"
 path.s3tc="res://.godot/imported/hair norm.jpg-59bc9dd75d9489651b4803dd20f6b1a7.s3tc.ctex"
+path.etc2="res://.godot/imported/hair norm.jpg-59bc9dd75d9489651b4803dd20f6b1a7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://vtube/arflin/Textures/hair norm.jpg"
-dest_files=["res://.godot/imported/hair norm.jpg-59bc9dd75d9489651b4803dd20f6b1a7.s3tc.ctex"]
+dest_files=["res://.godot/imported/hair norm.jpg-59bc9dd75d9489651b4803dd20f6b1a7.s3tc.ctex", "res://.godot/imported/hair norm.jpg-59bc9dd75d9489651b4803dd20f6b1a7.etc2.ctex"]
 
 [params]
 
