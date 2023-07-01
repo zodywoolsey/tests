@@ -1,14 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbqe06r0dh2tb"]
+[gd_scene load_steps=7 format=3 uid="uid://bbqe06r0dh2tb"]
 
 [ext_resource type="Script" path="res://graphics tests/window test/Button2.gd" id="1_q2tfu"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_8mhwb"]
+[sub_resource type="Sky" id="Sky_vco3v"]
+
+[sub_resource type="Environment" id="Environment_pyuv3"]
+background_mode = 1
+sky = SubResource("Sky_vco3v")
+tonemap_mode = 2
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_blend_mode = 0
+
+[sub_resource type="Shader" id="Shader_ry6gc"]
+code = "shader_type spatial;
+
+
+uniform vec3 color;
+
+void fragment() {
+	EMISSION = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_out6m"]
+render_priority = 0
+shader = SubResource("Shader_ry6gc")
+shader_parameter/color = Vector3(2.005, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5o3dk"]
 
 [node name="window" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pyuv3")
+
 [node name="Window" type="Window" parent="."]
-position = Vector2i(0, 36)
 mode = 3
+position = Vector2i(0, 36)
 
 [node name="Camera3D2" type="Camera3D" parent="Window"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
@@ -23,7 +56,9 @@ text = "button 1"
 script = ExtResource("1_q2tfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_8mhwb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0951324, 0.461648, 0.0959797)
+material_override = SubResource("ShaderMaterial_out6m")
+mesh = SubResource("SphereMesh_5o3dk")
 skeleton = NodePath("../Window")
 
 [node name="Camera3D" type="Camera3D" parent="."]
