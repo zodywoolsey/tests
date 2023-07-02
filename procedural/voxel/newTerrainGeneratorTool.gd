@@ -4,7 +4,7 @@ extends EditorScript
 #@onready var ter : MeshInstance3D = get_scene().find_child('TerrainMesh')
 var ter : MeshInstance3D
 
-var size = 200
+var size = 400
 var cSeed = 0
 var noiseScale = 1
 var snapScale = .5
