@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://m6blcg1r8lbf"]
+[gd_scene load_steps=11 format=3 uid="uid://m6blcg1r8lbf"]
 
 [ext_resource type="Shader" path="res://graphics tests/water vertex shader thing/water thing.gdshader" id="1_a642l"]
 [ext_resource type="PackedScene" uid="uid://dcm2w2nvcj57i" path="res://graphics tests/water vertex shader thing/drop.tscn" id="2_sakw6"]
@@ -18,10 +18,79 @@ shader = ExtResource("1_a642l")
 shader_parameter/res = 8.0
 shader_parameter/albedo = Vector4(1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_broif"]
+[sub_resource type="Shader" id="Shader_1jpa6"]
+code = "// created by zodiepupper and xlinka (https://github.com/xlinka)
+shader_type spatial;
+//render_mode unshaded;
+uniform float res;
+uniform vec4 albedo;
+uniform sampler2D noise;
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u3exp"]
-noise = SubResource("FastNoiseLite_broif")
+void vertex() {
+    vec3 scale = vec3(length(MODEL_MATRIX[0]), length(MODEL_MATRIX[1]), length(MODEL_MATRIX[2]));
+    mat4 rot_matrix = mat4(normalize(MODEL_MATRIX[0]), normalize(MODEL_MATRIX[1]), normalize(MODEL_MATRIX[2]), vec4(0.0, 0.0, 0.0, 1.0));
+    mat4 scale_matrix = mat4(vec4(scale.x, 0.0, 0.0, 0.0),
+                             vec4(0.0, scale.y, 0.0, 0.0),
+                             vec4(0.0, 0.0, scale.z, 0.0),
+                             vec4(0.0, 0.0, 0.0, 1.0));
+    vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+    world_pos.xyz = round(world_pos.xyz * res) / res;
+    vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+
+    VERTEX = (rot_matrix * scale_matrix * local_pos).xyz;
+}
+
+void fragment() {
+    ALBEDO = albedo.rgb;
+}
+
+//void light(){
+//
+//}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yuiw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_1jpa6")
+shader_parameter/res = 19.48
+shader_parameter/albedo = Vector4(1, 1, 1, 1)
+
+[sub_resource type="Shader" id="Shader_lmd6o"]
+code = "// created by zodiepupper and xlinka (https://github.com/xlinka)
+shader_type spatial;
+//render_mode unshaded;
+uniform float res;
+uniform vec4 albedo;
+uniform sampler2D noise;
+
+void vertex() {
+    vec3 scale = vec3(length(MODEL_MATRIX[0]), length(MODEL_MATRIX[1]), length(MODEL_MATRIX[2]));
+    mat4 rot_matrix = mat4(normalize(MODEL_MATRIX[0]), normalize(MODEL_MATRIX[1]), normalize(MODEL_MATRIX[2]), vec4(0.0, 0.0, 0.0, 1.0));
+    mat4 scale_matrix = mat4(vec4(scale.x, 0.0, 0.0, 0.0),
+                             vec4(0.0, scale.y, 0.0, 0.0),
+                             vec4(0.0, 0.0, scale.z, 0.0),
+                             vec4(0.0, 0.0, 0.0, 1.0));
+    vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+    world_pos.xyz = round(world_pos.xyz * res) / res;
+    vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+
+    VERTEX = (rot_matrix * scale_matrix * local_pos).xyz;
+}
+
+void fragment() {
+    ALBEDO = albedo.rgb;
+}
+
+//void light(){
+//
+//}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dd24"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_lmd6o")
+shader_parameter/res = 3.81
+shader_parameter/albedo = Vector4(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_st7ko"]
 resource_local_to_scene = true
@@ -29,7 +98,6 @@ render_priority = 0
 shader = ExtResource("1_a642l")
 shader_parameter/res = 8.0
 shader_parameter/albedo = Vector4(1, 1, 1, 1)
-shader_parameter/noise = SubResource("NoiseTexture2D_u3exp")
 
 [node name="water thing" type="Node3D"]
 
@@ -44,9 +112,17 @@ initial_velocity_min = 11.2
 initial_velocity_max = 11.2
 
 [node name="MeshInstance3D2" parent="." instance=ExtResource("2_sakw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382999, 1.32186, -0.417931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204404, 1.83554, -0.0820482)
 material_override = SubResource("ShaderMaterial_h52kt")
 
+[node name="MeshInstance3D4" parent="." instance=ExtResource("2_sakw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11777, 1.93963, -0.0820482)
+material_override = SubResource("ShaderMaterial_3yuiw")
+
+[node name="MeshInstance3D5" parent="." instance=ExtResource("2_sakw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06404, 1.5686, -0.0820482)
+material_override = SubResource("ShaderMaterial_8dd24")
+
 [node name="MeshInstance3D3" parent="." instance=ExtResource("2_sakw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5021, 1.20665, 0.570327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.853084, 1.54842, 0.136745)
 material_override = SubResource("ShaderMaterial_st7ko")

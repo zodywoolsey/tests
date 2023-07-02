@@ -210,3 +210,11 @@ bones/95/rotation = Quaternion(0.0840828, -1.71274e-09, 6.47775e-09, 0.996459)
 bones/96/rotation = Quaternion(-1.37654e-07, -0.664283, 0.747481, -1.29341e-07)
 bones/97/rotation = Quaternion(8.1062e-09, -2.70603e-08, 4.51487e-14, 1)
 bones/98/rotation = Quaternion(0.998672, 0, 0, 0.0515169)
+
+[node name="body" parent="arflin" index="1"]
+extra_cull_margin = 40.0
+
+[node name="Node3D" parent="arflin" index="3"]
+transform = Transform3D(0.826125, 0.533364, 0.181771, 0.520903, -0.845887, 0.114614, 0.214889, -3.50976e-15, -0.976638, 0.934274, 5.2, -0.356556)
+
+[editable path="arflin"]
