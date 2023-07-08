@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cbsb0o2hfurga"
+path="res://.godot/imported/Maze025x025Length05SpectrumNarrowPath-3835129273.png-dfb0767ceb0c13ea88a1c164f596768a.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://graphics tests/shader pathing/Maze025x025Length05SpectrumNarrowPath-3835129273.png"
+dest_files=["res://.godot/imported/Maze025x025Length05SpectrumNarrowPath-3835129273.png-dfb0767ceb0c13ea88a1c164f596768a.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=1.0
+compress/hdr_compression=1
+compress/normal_map=2
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=4096
+detect_3d/compress_to=0

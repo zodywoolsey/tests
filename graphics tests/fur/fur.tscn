@@ -1,0 +1,609 @@
+[gd_scene load_steps=44 format=3 uid="uid://dd84acu6fe2e5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3bpyu"]
+
+[sub_resource type="Shader" id="Shader_5m4me"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uqrjr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_541s7"]
+noise = SubResource("FastNoiseLite_uqrjr")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dm5oa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a8p5u"]
+noise = SubResource("FastNoiseLite_dm5oa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vv86"]
+render_priority = 0
+shader = SubResource("Shader_5m4me")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.1
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_a8p5u")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_541s7")
+
+[sub_resource type="Shader" id="Shader_jjbxb"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bk8t8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o72su"]
+noise = SubResource("FastNoiseLite_bk8t8")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v1x53"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rhy6l"]
+noise = SubResource("FastNoiseLite_v1x53")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3guc0"]
+render_priority = 0
+shader = SubResource("Shader_jjbxb")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.2
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_rhy6l")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_o72su")
+
+[sub_resource type="Shader" id="Shader_d637l"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t8s44"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tb06k"]
+noise = SubResource("FastNoiseLite_t8s44")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcrlj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_342im"]
+noise = SubResource("FastNoiseLite_pcrlj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwmhs"]
+render_priority = 0
+shader = SubResource("Shader_d637l")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.3
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_342im")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_tb06k")
+
+[sub_resource type="Shader" id="Shader_cwdj5"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mllgx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_foic0"]
+noise = SubResource("FastNoiseLite_mllgx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wi2t4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1yhbj"]
+noise = SubResource("FastNoiseLite_wi2t4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkqmk"]
+render_priority = 0
+shader = SubResource("Shader_cwdj5")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.4
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_1yhbj")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_foic0")
+
+[sub_resource type="Shader" id="Shader_7qx1l"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_30p0r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k5mo5"]
+noise = SubResource("FastNoiseLite_30p0r")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pxpg1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ht6hb"]
+noise = SubResource("FastNoiseLite_pxpg1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujqkh"]
+render_priority = 0
+shader = SubResource("Shader_7qx1l")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.5
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_ht6hb")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_k5mo5")
+
+[sub_resource type="Shader" id="Shader_oepy4"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lwrap"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ncmhh"]
+noise = SubResource("FastNoiseLite_lwrap")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykam4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r6a43"]
+noise = SubResource("FastNoiseLite_ykam4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryf0o"]
+render_priority = 0
+shader = SubResource("Shader_oepy4")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.6
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_r6a43")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_ncmhh")
+
+[sub_resource type="Shader" id="Shader_ddyno"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D fur_tex;
+uniform sampler2D fur_params_tex;
+uniform float max_len=0.5;
+uniform float cur_layer:hint_range(0,1);
+uniform vec3 gravity = vec3(0,-1,0);
+
+void vertex() {
+    /*
+	vec3 forceDirection = vec3(0.0);
+	vec4 position = vec4(VERTEX, 1.0);
+	
+	// Wind
+	forceDirection.x = sin(TIME + position.x * 0.05) * 0.2;
+	forceDirection.y = cos(TIME * 0.7 + position.y * 0.04) * 0.2;
+	forceDirection.z = sin(TIME * 0.7 + position.y * 0.04) * 0.2;
+	
+	vec3 displacement = forceDirection + gravity;
+	
+	float displacementFactor = pow(cur_layer, 3.0);
+	vec4 aNormal = vec4(NORMAL,1.0);
+	aNormal.xyz += displacement * displacementFactor;
+	
+	vec4 n = normalize(aNormal) * max_len * cur_layer;
+	vec4 wpos = vec4(VERTEX.xyz + n.xyz, 1.0);
+    VERTEX = wpos.xyz;
+    */
+    
+    vec3 pos = VERTEX.xyz + NORMAL * max_len * cur_layer;
+    VERTEX = pos;
+
+    
+    // twp possibilities to offset the vertex:
+    // VERTEX.xyz + NORMAL * offset
+    // VERTEX + NORMAL * MaxHairLength * CurrentLayer
+}
+
+void fragment(){
+    vec4 fur_params = texture(fur_params_tex, UV);
+
+    if (cur_layer == 0.0) {
+        if (fur_params.g == 0.0) {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.65;
+        } else {
+            ALBEDO = texture(fur_tex, UV).rgb * 0.4;
+        }
+    } else if (fur_params.b <= 0.35 || fur_params.r < cur_layer || fur_params.g == 0.0) {
+        ALPHA = 0.0;
+	} else {
+        vec3 fur = texture(fur_tex, UV).rgb;
+        fur *= mix(0.4, 1.0, cur_layer);
+    
+        ALBEDO = fur;
+
+        ALPHA = 1.1 - cur_layer;
+    }
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vxaao"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2436j"]
+noise = SubResource("FastNoiseLite_vxaao")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3eg5n"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r5lxd"]
+noise = SubResource("FastNoiseLite_3eg5n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wl1h0"]
+render_priority = 0
+shader = SubResource("Shader_ddyno")
+shader_parameter/max_len = 0.2
+shader_parameter/cur_layer = 0.001
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/fur_tex = SubResource("NoiseTexture2D_r5lxd")
+shader_parameter/fur_params_tex = SubResource("NoiseTexture2D_2436j")
+
+[node name="fur" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_1vv86")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+sorting_offset = 2.0
+material_override = SubResource("ShaderMaterial_3guc0")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+sorting_offset = 3.0
+material_override = SubResource("ShaderMaterial_jwmhs")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+sorting_offset = 4.0
+material_override = SubResource("ShaderMaterial_mkqmk")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+sorting_offset = 5.0
+material_override = SubResource("ShaderMaterial_ujqkh")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+sorting_offset = 6.0
+material_override = SubResource("ShaderMaterial_ryf0o")
+mesh = SubResource("BoxMesh_3bpyu")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_wl1h0")
+mesh = SubResource("BoxMesh_3bpyu")

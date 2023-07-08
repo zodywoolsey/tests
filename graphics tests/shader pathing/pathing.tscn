@@ -1,20 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://py3kxsxuixm8"]
+[gd_scene load_steps=6 format=3 uid="uid://py3kxsxuixm8"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_y5t4m"]
-noise_type = 2
-fractal_type = 0
+[ext_resource type="Shader" path="res://graphics tests/shader pathing/pathing.gdshader" id="1_rf3f2"]
+[ext_resource type="Texture2D" uid="uid://cbsb0o2hfurga" path="res://graphics tests/shader pathing/Maze025x025Length05SpectrumNarrowPath-3835129273.png" id="2_3g4i7"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6vql7"]
-seamless = true
-noise = SubResource("FastNoiseLite_y5t4m")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svp5v"]
+render_priority = 0
+shader = ExtResource("1_rf3f2")
+shader_parameter/target = 0.22
+shader_parameter/dist = 0.1
+shader_parameter/pathmap = ExtResource("2_3g4i7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0gwb"]
-albedo_texture = SubResource("NoiseTexture2D_6vql7")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ob7q1"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_3q4qe"]
+[sub_resource type="GDScript" id="GDScript_kc3gp"]
+script/source = "@tool
+extends MeshInstance3D
+
+func _process(delta):
+	if material_override.get_shader_parameter(\"target\") > 1.1:
+		material_override.set_shader_parameter(\"target\", 0.1)
+	else:
+		material_override.set_shader_parameter(
+			\"target\",
+			material_override.get_shader_parameter(\"target\")+.005)
+"
 
 [node name="pathing" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_a0gwb")
-mesh = SubResource("SphereMesh_3q4qe")
+material_override = SubResource("ShaderMaterial_svp5v")
+mesh = SubResource("PlaneMesh_ob7q1")
+script = SubResource("GDScript_kc3gp")

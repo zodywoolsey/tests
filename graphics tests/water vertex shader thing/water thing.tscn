@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65jw4"]
 render_priority = 0
 shader = ExtResource("1_a642l")
-shader_parameter/res = 3.125
+shader_parameter/res = 3.805
 shader_parameter/albedo = Vector4(0.72, 1, 3.68, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ud8hd"]
@@ -104,8 +104,7 @@ shader_parameter/albedo = Vector4(1, 1, 1, 1)
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 visible = false
 material_override = SubResource("ShaderMaterial_65jw4")
-amount = 10000
-fixed_fps = 30
+amount = 663
 mesh = SubResource("SphereMesh_ud8hd")
 spread = 19.25
 initial_velocity_min = 11.2
@@ -120,7 +119,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11777, 1.93963, -0.0820482
 material_override = SubResource("ShaderMaterial_3yuiw")
 
 [node name="MeshInstance3D5" parent="." instance=ExtResource("2_sakw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06404, 1.5686, -0.0820482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05469, 1.80204, 0.247254)
 material_override = SubResource("ShaderMaterial_8dd24")
 
 [node name="MeshInstance3D3" parent="." instance=ExtResource("2_sakw6")]
