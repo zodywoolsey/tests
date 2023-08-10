@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmxsi7v453wxp"]
+
+[ext_resource type="Script" path="res://ui/bark testing/clipboard import/glbimport.gd" id="1_aunyv"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_aunyv")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.83642, 0.548089, 0, -0.548089, 0.83642, 0, 4, 5)
