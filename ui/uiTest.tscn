@@ -41,7 +41,7 @@ func input(e):
 	sub_viewport.push_input(tmp)
 "
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_oa2ho"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_d10rp"]
 viewport_path = NodePath("RigidBody3D/MeshInstance3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ts68"]
@@ -49,7 +49,7 @@ resource_local_to_scene = true
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = SubResource("ViewportTexture_oa2ho")
+albedo_texture = SubResource("ViewportTexture_d10rp")
 
 [sub_resource type="QuadMesh" id="QuadMesh_1o6yv"]
 material = SubResource("StandardMaterial3D_4ts68")
