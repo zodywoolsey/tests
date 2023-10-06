@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="tests"
-run/main_scene="res://ui/touch test.tscn"
+run/main_scene="res://ui/offset 3d view/offset 3d view with ui on the right.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,7 +24,6 @@ driver/enable_input=true
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/transparent=true
 window/subwindows/embed_subwindows=false
 
 [editor_plugins]
@@ -97,6 +96,7 @@ consoleToggle={
 
 [input_devices]
 
+pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
 
 [layer_names]

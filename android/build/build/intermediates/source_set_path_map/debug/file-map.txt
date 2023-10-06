@@ -1,7 +1,7 @@
 com.godot.game-lifecycle-runtime-2.3.1-0 C:\Users\zodie\.gradle\caches\transforms-3\0ce7ec994a520619fa7bc00a51a36777\transformed\lifecycle-runtime-2.3.1\res
 com.godot.game-fragment-1.3.6-1 C:\Users\zodie\.gradle\caches\transforms-3\189e80978ed2f28e12fcb892018fb934\transformed\fragment-1.3.6\res
 com.godot.game-lifecycle-viewmodel-2.3.1-2 C:\Users\zodie\.gradle\caches\transforms-3\3102a421f9f9c72d52e08f6fe09310fd\transformed\lifecycle-viewmodel-2.3.1\res
-com.godot.game-jetified-godot-lib.template_debug-3 C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\res
+com.godot.game-jetified-godot-lib.template_debug-3 C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\res
 com.godot.game-jetified-savedstate-1.1.0-4 C:\Users\zodie\.gradle\caches\transforms-3\94b972ed44b18279006052b701b4135c\transformed\jetified-savedstate-1.1.0\res
 com.godot.game-core-1.2.0-5 C:\Users\zodie\.gradle\caches\transforms-3\9bcb1a65f5938aad264f4d73e9a06f28\transformed\core-1.2.0\res
 com.godot.game-pngs-6 C:\Users\zodie\Documents\github\tests\android\build\build\generated\res\pngs\debug

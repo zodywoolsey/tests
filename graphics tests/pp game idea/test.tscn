@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://blpo4da3f2xl7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jponm"]
+size = Vector2(20, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c788j"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2c7p"]
+size = Vector2(292, 20)
+
+[node name="test" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(306, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="."]
+position = Vector2(318, 123)
+freeze = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D7"]
+shape = SubResource("RectangleShape2D_c788j")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(286, 112)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(267, 112)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(306, 134)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(286, 134)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="RigidBody2D5"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="."]
+position = Vector2(267, 134)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="RigidBody2D6"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_jponm")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(318, 115)
+rotation = 1.5708
+node_a = NodePath("../RigidBody2D7")
+node_b = NodePath("../RigidBody2D")
+length = 10.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+position = Vector2(318, 129)
+rotation = 1.5708
+node_a = NodePath("../RigidBody2D7")
+node_b = NodePath("../RigidBody2D4")
+length = 1.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(298, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+rotation = -0.187615
+shape = SubResource("RectangleShape2D_u2c7p")

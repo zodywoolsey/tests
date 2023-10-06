@@ -57,7 +57,7 @@
 35-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:12:9-28
 36
 37    <application
-37-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:19:5-52:19
+37-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:19:5-53:19
 38        android:allowBackup="false"
 38-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:21:9-36
 39        android:appCategory="game"
@@ -77,7 +77,7 @@
 47        android:requestLegacyExternalStorage="false" >
 47-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:26:9-53
 48        <activity
-48-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:34:9-50:20
+48-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:34:9-51:20
 49            android:name="com.godot.game.GodotApp"
 49-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:35:13-37
 50            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
@@ -97,78 +97,81 @@
 57            android:theme="@style/GodotAppSplashTheme" >
 57-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:37:13-55
 58            <intent-filter>
-58-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:46:13-49:29
+58-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:46:13-50:29
 59                <action android:name="android.intent.action.MAIN" />
 59-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:47:17-69
 59-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:47:25-66
 60
-61                <category android:name="android.intent.category.LAUNCHER" />
-61-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:48:17-77
-61-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:48:27-74
-62            </intent-filter>
-63        </activity>
-64        <!-- Records the version of the Godot editor used for building -->
-65        <meta-data
-66            android:name="org.godotengine.editor.version"
-67            android:value="4.2.dev2" /> <!-- Records the version of the Godot library -->
-68        <meta-data
-68-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:9-16:41
-69            android:name="org.godotengine.library.version"
-69-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:15:13-59
-70            android:value="4.2.0.dev" />
-70-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:13-38
-71
-72        <service android:name="org.godotengine.godot.GodotDownloaderService" />
-72-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-80
-72-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:18-77
-73
-74        <activity
-74-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:9-24:75
-75            android:name="org.godotengine.godot.utils.ProcessPhoenix"
-75-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-70
-76            android:exported="false"
-76-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-37
-77            android:process=":phoenix"
-77-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-39
-78            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-78-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-72
-79
-80        <provider
-80-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:9-34:20
-81            android:name="androidx.core.content.FileProvider"
-81-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-62
-82            android:authorities="tests.pupper.dev.fileprovider"
-82-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-64
-83            android:exported="false"
-83-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-37
-84            android:grantUriPermissions="true" >
-84-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:13-47
-85            <meta-data
-85-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:13-33:64
-86                android:name="android.support.FILE_PROVIDER_PATHS"
-86-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:32:17-67
-87                android:resource="@xml/godot_provider_paths" />
-87-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\8cc10bf3d4946adb17f3757f142bfab7\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:33:17-61
-88        </provider>
-89
-90        <meta-data
-90-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:15:9-17:82
-91            android:name="org.godotengine.plugin.v1.GodotOpenXRMeta"
-91-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:16:13-69
-92            android:value="org.godotengine.openxrloaders.meta.GodotOpenXRMeta" />
-92-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:17:13-79
-93        <meta-data
-93-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:18:9-20:53
-94            android:name="com.oculus.supportedDevices"
-94-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:19:13-55
-95            android:value="quest|quest2|questpro" />
-95-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:20:13-50
-96        <meta-data
-96-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:21:9-23:36
-97            android:name="com.oculus.vr.focusaware"
-97-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:22:13-52
-98            android:value="true" />
-98-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:23:13-33
-99    </application>
-100
-101</manifest>
+61                <category android:name="android.intent.category.DEFAULT" />
+61-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:48:17-76
+61-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:48:27-73
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:49:17-77
+62-->C:\Users\zodie\Documents\github\tests\android\build\AndroidManifest.xml:49:27-74
+63            </intent-filter>
+64        </activity>
+65        <!-- Records the version of the Godot editor used for building -->
+66        <meta-data
+67            android:name="org.godotengine.editor.version"
+68            android:value="4.2.dev5" /> <!-- Records the version of the Godot library -->
+69        <meta-data
+69-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:9-16:41
+70            android:name="org.godotengine.library.version"
+70-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:15:13-59
+71            android:value="4.2.0.dev" />
+71-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:13-38
+72
+73        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+73-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-80
+73-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:18-77
+74
+75        <activity
+75-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:9-24:75
+76            android:name="org.godotengine.godot.utils.ProcessPhoenix"
+76-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-70
+77            android:exported="false"
+77-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-37
+78            android:process=":phoenix"
+78-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-39
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+79-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-72
+80
+81        <provider
+81-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:9-34:20
+82            android:name="androidx.core.content.FileProvider"
+82-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-62
+83            android:authorities="tests.pupper.dev.fileprovider"
+83-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-64
+84            android:exported="false"
+84-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-37
+85            android:grantUriPermissions="true" >
+85-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:13-47
+86            <meta-data
+86-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:13-33:64
+87                android:name="android.support.FILE_PROVIDER_PATHS"
+87-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:32:17-67
+88                android:resource="@xml/godot_provider_paths" />
+88-->[godot-lib.template_debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\3352a68cf4f4e9e9666b79caca951629\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:33:17-61
+89        </provider>
+90
+91        <meta-data
+91-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:15:9-17:82
+92            android:name="org.godotengine.plugin.v1.GodotOpenXRMeta"
+92-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:16:13-69
+93            android:value="org.godotengine.openxrloaders.meta.GodotOpenXRMeta" />
+93-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:17:13-79
+94        <meta-data
+94-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:18:9-20:53
+95            android:name="com.oculus.supportedDevices"
+95-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:19:13-55
+96            android:value="quest|quest2|questpro" />
+96-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:20:13-50
+97        <meta-data
+97-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:21:9-23:36
+98            android:name="com.oculus.vr.focusaware"
+98-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:22:13-52
+99            android:value="true" />
+99-->[godotopenxrmeta-debug.aar] C:\Users\zodie\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:23:13-33
+100    </application>
+101
+102</manifest>

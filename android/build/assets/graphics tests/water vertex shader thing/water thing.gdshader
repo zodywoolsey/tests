@@ -3,7 +3,7 @@ shader_type spatial;
 //render_mode unshaded;
 uniform float res;
 uniform vec4 albedo;
-uniform sampler2D noise;
+uniform sampler3D noise;
 
 void vertex() {
     vec3 scale = vec3(length(MODEL_MATRIX[0]), length(MODEL_MATRIX[1]), length(MODEL_MATRIX[2]));
@@ -13,7 +13,7 @@ void vertex() {
                              vec4(0.0, 0.0, scale.z, 0.0),
                              vec4(0.0, 0.0, 0.0, 1.0));
     vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
-    world_pos.xyz = round(world_pos.xyz * res) / res;
+    world_pos.xyz = (round(world_pos.xyz * res) / res);
     vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
 
     VERTEX = (rot_matrix * scale_matrix * local_pos).xyz;

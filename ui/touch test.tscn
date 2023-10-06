@@ -1,4 +1,29 @@
-[gd_scene format=3 uid="uid://bf0e8awi1oo75"]
+[gd_scene load_steps=2 format=3 uid="uid://bf0e8awi1oo75"]
+
+[sub_resource type="GDScript" id="GDScript_m3f73"]
+script/source = "extends Tree
+
+var chars = \"qwertasdfgzxcvb/.,mn';lkjh\\\\][poiuy=-0987`123456]\"
+var root:TreeItem
+
+func _ready():
+	root = create_item()
+	for i in range(100):
+		var tmp = create_item(root)
+		tmp.set_text(0, genname())
+		for a in range(randi_range(0,20)):
+			var tmp2 = create_item(tmp)
+			tmp2.set_text(0, genname())
+
+func genname():
+	var tmp = ''
+	for i in range(randi_range(4,30)):
+		tmp+=Array(chars.split()).pick_random()
+	return tmp
+
+func _input(event):
+	print(event)
+"
 
 [node name="touch test" type="Control"]
 layout_mode = 3
@@ -9,6 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -335,3 +361,13 @@ text = "test"
 layout_mode = 2
 size_flags_vertical = 3
 text = "test"
+
+[node name="ItemList" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+script = SubResource("GDScript_m3f73")

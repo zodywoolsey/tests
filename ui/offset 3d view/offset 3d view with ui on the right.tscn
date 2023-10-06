@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://1eqpi8fdjrs8"]
+
+[ext_resource type="Script" path="res://ui/offset 3d view/offset 3d view with ui on the right.gd" id="1_uk1b0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2m77p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_leycg"]
+
+[sub_resource type="Sky" id="Sky_f7r22"]
+sky_material = SubResource("ProceduralSkyMaterial_leycg")
+
+[sub_resource type="Environment" id="Environment_olac4"]
+background_mode = 2
+sky = SubResource("Sky_f7r22")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="offset 3d view with ui on the right" type="Node3D"]
+script = ExtResource("1_uk1b0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="SplitContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1133, 900)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Control/HBoxContainer/SubViewportContainer/SubViewport"]
+mesh = SubResource("BoxMesh_2m77p")
+skeleton = NodePath("../../../../..")
+
+[node name="Camera3D" type="Camera3D" parent="Control/HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Control/HBoxContainer/SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_olac4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(455.93, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "sdfadsf"
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdfsdafads"
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdfdasfadsf"
+
+[node name="Button4" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "sadfasdfasdfasf"
+
+[node name="Button5" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdfadsaf"
