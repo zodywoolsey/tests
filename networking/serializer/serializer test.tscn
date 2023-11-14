@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://utjvt8oabgxe"]
+
+[ext_resource type="Script" path="res://networking/serializer/serializer test.gd" id="1_gawea"]
+[ext_resource type="Material" uid="uid://bdpi03sd8b6aa" path="res://addons/kenney_prototype_textures/triplanar/dark.tres" id="2_v6ks0"]
+[ext_resource type="Script" path="res://networking/serializer/RigidBody3D.gd" id="2_vd65q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e0lhj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xko4y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wx1a8"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1wooh"]
+points = PackedVector3Array(-5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, -0.5, 5, -5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, 5)
+
+[node name="serializer test" type="Node3D"]
+script = ExtResource("1_gawea")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["GROUP"]]
+script = ExtResource("2_vd65q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+material_override = ExtResource("2_v6ks0")
+mesh = SubResource("SphereMesh_e0lhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_xko4y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = ExtResource("2_v6ks0")
+mesh = SubResource("BoxMesh_wx1a8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_1wooh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://x4yykgy8uylg"]
+
+[ext_resource type="Script" path="res://ui/drag and drop/dragndrop3d.gd" id="1_mvfsm"]
+
+[node name="Dragndrop3d" type="Node3D"]
+script = ExtResource("1_mvfsm")
+
+[node name="camparent" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="camparent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="camparent/Camera3D"]

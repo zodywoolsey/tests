@@ -85,4 +85,5 @@ void fragment() {
 	SPECULAR = specular;
 	ALPHA *= albedo.a * albedo_tex.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+	BACKLIGHT = ALBEDO*.5;
 }

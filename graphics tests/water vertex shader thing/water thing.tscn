@@ -111,7 +111,7 @@ initial_velocity_min = 11.2
 initial_velocity_max = 11.2
 
 [node name="MeshInstance3D2" parent="." instance=ExtResource("2_sakw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204404, 1.83554, -0.0820482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.951928, 1.84279, -0.0820482)
 material_override = SubResource("ShaderMaterial_h52kt")
 
 [node name="MeshInstance3D4" parent="." instance=ExtResource("2_sakw6")]
@@ -123,5 +123,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05469, 1.80204, 0.247254)
 material_override = SubResource("ShaderMaterial_8dd24")
 
 [node name="MeshInstance3D3" parent="." instance=ExtResource("2_sakw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.853084, 1.54842, 0.136745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0524752, 1.84947, -0.0502144)
 material_override = SubResource("ShaderMaterial_st7ko")
