@@ -28,7 +28,7 @@ window/subwindows/embed_subwindows=false
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
 [importer_defaults]
 
